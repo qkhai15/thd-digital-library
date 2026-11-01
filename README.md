@@ -1,200 +1,222 @@
-# 📚 Thư viện số Trường THPT Trần Hưng Đạo – Thanh Xuân
+# 📚 Tran Hung Dao – Thanh Xuan High School Digital Library
 
-Hệ thống thư viện số được xây dựng nhằm hỗ trợ công tác quản lý, khai thác và chia sẻ tài nguyên học tập của Trường THPT Trần Hưng Đạo – Thanh Xuân, Hà Nội.
+A digital library platform developed for **Tran Hung Dao – Thanh Xuan High School, Hanoi, Vietnam**, designed to modernize library management and provide convenient access to educational resources for students and teachers.
 
-Website cung cấp môi trường tra cứu, đọc tài liệu và tiếp cận học liệu trực tuyến dành cho giáo viên, học sinh, đồng thời hỗ trợ cán bộ thư viện quản lý tài liệu và hoạt động mượn – trả sách.
+🌐 **Official Website:** https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
 
-**🌐 Website chính thức:** https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
+## About the Project
 
-## 1. Giới thiệu
+The Digital Library is a web-based platform that helps students, teachers, and library administrators discover, access, organize, and manage educational resources.
 
-Dự án hướng đến việc hiện đại hóa hoạt động thư viện trong nhà trường thông qua nền tảng trực tuyến, giúp người dùng tiếp cận tài nguyên học tập thuận tiện trên máy tính, điện thoại và các thiết bị có trình duyệt web.
+The system supports multiple content formats, online document viewing, book borrowing management, and administrative workflows.
 
-Hệ thống được phát triển bằng Next.js, React, TypeScript và PostgreSQL, triển khai trên Railway và sử dụng dịch vụ Supabase cho cơ sở dữ liệu, lưu trữ tài liệu.
+Built with modern web technologies, the platform is designed to be responsive, maintainable, secure, and accessible across desktop and mobile devices.
 
-## 2. Các chức năng chính
+## Key Features
 
-### Dành cho người đọc
+### For Students and Teachers
 
-- Tra cứu và tìm kiếm tài liệu theo từ khóa.
-- Xem danh mục sách giấy, sách điện tử, sách nói, video, album ảnh và các học liệu khác.
-- Đọc tài liệu PDF trực tuyến.
-- Nghe nội dung âm thanh, xem video và album ảnh.
-- Xem thông tin chi tiết, lượt xem và lượt yêu thích của tài liệu.
-- Gửi yêu cầu mượn sách giấy.
-- Theo dõi tin tức và hoạt động thư viện.
+- Browse and search the library catalog.
+- Access printed books, e-books, audiobooks, videos, photo albums, and other educational materials.
+- Read PDF documents directly in the browser.
+- Stream supported audio and video content.
+- View document information and engagement statistics.
+- Submit book borrowing requests.
+- Explore school news and library activities.
 
-### Các chức năng thuộc bản nâng cấp
+### Feature Upgrade (In Development)
 
-Những chức năng dưới đây đã được phát triển trong nhánh `feature-upgrade` và cần hoàn tất quy trình phát hành trước khi coi là chính thức hoạt động trên production:
+The `feature-upgrade` branch introduces additional capabilities that are undergoing final verification and release preparation:
 
-- Tìm kiếm nâng cao và bộ lọc tài liệu.
-- Phân loại theo môn học, khối lớp, chủ đề và từ khóa.
-- Bộ sưu tập học liệu.
-- Gợi ý tài liệu liên quan.
-- Mã QR và chia sẻ liên kết tài liệu.
-- Lưu tài liệu để đọc sau.
-- Lịch sử tài liệu đã xem.
-- Quy trình quản lý mượn – trả và kiểm soát tồn kho.
-- Bảng thống kê, phân tích hoạt động thư viện.
-- Quy trình quản lý trạng thái xuất bản tài liệu.
+- **Advanced Search:** Search suggestions, filtering, and sorting.
+- **Document Classification:** Organize materials by subject, grade, topic, and tags.
+- **Collections:** Curated educational resource collections.
+- **Related Documents:** Discover relevant learning materials.
+- **QR Codes:** Generate document-specific QR codes for sharing.
+- **Bookmarks:** Save documents for later.
+- **Recently Viewed:** Quickly revisit previously accessed materials.
+- **Borrowing Workflow:** Manage approval, pickup, borrowing, and returns.
+- **Inventory Management:** Maintain consistent book availability.
+- **Admin Analytics:** Monitor library activity and usage statistics.
+- **Publishing Workflow:** Manage draft, review, published, and archived content.
 
-## 3. Chức năng quản trị
+These features should not be considered deployed to production until the release and verification process is complete.
 
-Hệ thống cung cấp khu vực quản trị phục vụ cán bộ thư viện:
+## Administration
 
-- Thêm, chỉnh sửa, cập nhật tài liệu.
-- Quản lý hình ảnh, tệp PDF, âm thanh và video.
-- Quản lý sách giấy và số lượng tồn kho.
-- Tiếp nhận, duyệt và xử lý yêu cầu mượn – trả.
-- Quản lý tin tức, bình luận và nội dung giới thiệu.
-- Theo dõi nhật ký hoạt động.
-- Cấu hình thông tin và nội dung hiển thị trên website.
+The administration dashboard supports:
 
-Một số chức năng quản trị nâng cao chỉ có trong nhánh đang phát triển và chưa được xác nhận đã triển khai trên website chính thức.
+- Document and metadata management.
+- File uploads and media management.
+- Book inventory tracking.
+- Borrowing request management.
+- News and content publishing.
+- Comment moderation.
+- Library settings and configuration.
+- Activity logs and operational monitoring.
 
-## 4. Công nghệ sử dụng
+Administrative operations require authentication and appropriate authorization.
 
-| Thành phần | Công nghệ |
+## Technology Stack
+
+| Layer | Technology |
 |---|---|
-| Giao diện | Next.js, React, TypeScript |
+| Frontend | Next.js, React, TypeScript |
 | Backend | Next.js App Router, API Routes |
-| Cơ sở dữ liệu | PostgreSQL |
-| Truy cập cơ sở dữ liệu | `pg` |
-| Dịch vụ cơ sở dữ liệu | Supabase |
-| Lưu trữ tài liệu | Supabase Storage |
-| Triển khai website | Railway |
-| Trình đọc PDF | PDF.js |
-| Đóng gói ứng dụng | Docker |
+| Database | PostgreSQL |
+| Database Driver | `pg` |
+| Managed Database | Supabase PostgreSQL |
+| File Storage | Supabase Storage |
+| Hosting | Railway |
+| Containerization | Docker |
+| PDF Viewer | PDF.js |
+| Version Control | Git & GitHub |
 
-## 5. Cài đặt và chạy trên máy cá nhân
+## Getting Started
 
-### Yêu cầu
+### Prerequisites
 
-- Node.js và npm tương thích với phiên bản của dự án.
-- PostgreSQL hoặc một cơ sở dữ liệu phát triển được cấp riêng.
-- Các biến môi trường cần thiết.
+- Node.js and npm
+- A dedicated development PostgreSQL database
+- Required environment variables
 
-### Cài đặt
+### Installation
 
-Tải mã nguồn:
+**1. Clone the repository**
 
-```bash
-git clone https://github.com/qkhai15/thd-digital-library.git
-cd thd-digital-library
-```
+`git clone https://github.com/qkhai15/thd-digital-library.git`
 
-Nếu sử dụng nhánh nâng cấp:
+`cd thd-digital-library`
 
-```bash
-git switch feature-upgrade
-```
+**2. Switch to the development branch**
 
-Cài đặt các thư viện:
+`git switch feature-upgrade`
 
-```bash
-npm ci
-```
+**3. Install dependencies**
 
-Tạo file `.env.local` từ `.env.example` và cấu hình cho môi trường phát triển.
+`npm ci`
 
-**Lưu ý:** Không sử dụng thông tin kết nối cơ sở dữ liệu production để thử migration hoặc chạy các bài kiểm thử có thể thay đổi dữ liệu.
+**4. Configure environment variables**
 
-Sau khi chuẩn bị cơ sở dữ liệu phát triển, chạy migration theo hướng dẫn của dự án:
+Create a local `.env.local` file using `.env.example` as a reference.
 
-```bash
-npm run db:migrate
-```
+Use development credentials and a dedicated development database. Never use production credentials for local experimentation.
 
-Khởi động ứng dụng:
+**5. Run database migrations**
 
-```bash
-npm run dev
-```
+After configuring a safe development database:
 
-Mở trình duyệt tại:
+`npm run db:migrate`
 
-http://localhost:3000
+**6. Start the development server**
 
-## 6. Kiểm thử
+`npm run dev`
 
-Dự án có các bài kiểm thử phục vụ việc xác minh chức năng, bảo mật và tính ổn định của hệ thống.
+Open http://localhost:3000 in your browser.
 
-```bash
-npm test
-```
+## Testing
 
-Kiểm tra TypeScript:
+The project includes automated tests for application functionality, database integration, security-related behavior, and regression prevention.
 
-```bash
-npx tsc --noEmit
-```
+**Run the test suite**
 
-Kiểm tra quy tắc mã nguồn:
+`npm test`
 
-```bash
-npm run lint
-```
+**TypeScript validation**
 
-Build ứng dụng:
+`npx tsc --noEmit`
 
-```bash
-npm run build
-```
+**Lint**
 
-Kiểm thử PostgreSQL sử dụng cơ sở dữ liệu kiểm thử được cấu hình riêng:
+`npm run lint`
 
-```bash
-npm run test:postgres
-```
+**Production build verification**
 
-Kết quả kiểm thử cần được xác minh lại trên mã nguồn hiện tại trước khi phát hành.
+`npm run build`
 
-## 7. Trạng thái triển khai
+**PostgreSQL integration tests**
 
-**Website chính thức:** Đã được triển khai trên tên miền của nhà trường.
+`npm run test:postgres`
 
-**Nhánh `feature-upgrade`:** Chứa các chức năng mở rộng đang trong quá trình hoàn thiện và phát hành.
+Database-related tests must use an appropriately isolated environment.
 
-Việc cập nhật mã nguồn lên GitHub không đồng nghĩa các thay đổi đã được triển khai lên website chính thức.
+Test results should be reverified against the current code before every production release.
 
-Trước khi phát hành phiên bản mới, cần thực hiện đầy đủ:
+## Deployment Status
 
-- Kiểm thử mã nguồn và các chức năng.
-- Sao lưu và xác minh khả năng phục hồi cơ sở dữ liệu.
-- Kiểm tra migration và bảo toàn dữ liệu hiện có.
-- Kiểm thử Docker và môi trường triển khai.
-- Triển khai phiên bản mới.
-- Kiểm tra lại website trên tên miền chính thức.
+### Production Website
 
-## 8. Bảo mật và dữ liệu
+The existing website is deployed on Railway with PostgreSQL and Supabase Storage.
 
-Dự án sử dụng biến môi trường để quản lý thông tin cấu hình nhạy cảm.
+**Production URL:** https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
 
-Không đưa lên repository:
+### Development Branch
 
-- Mật khẩu và khóa truy cập dịch vụ.
-- Connection string chứa thông tin xác thực.
-- File `.env.local` hoặc cấu hình production thực tế.
-- Bản sao lưu cơ sở dữ liệu và tệp lưu trữ.
-- Khóa mã hóa và thông tin phục hồi.
-- Dữ liệu riêng tư của người dùng.
+The `feature-upgrade` branch contains the next generation of library features.
 
-Việc quản lý dữ liệu và triển khai production phải tuân thủ các quy trình sao lưu, kiểm thử và phân quyền phù hợp.
+Development code is not automatically considered production-ready.
 
-## 9. Tài liệu kỹ thuật
+Before deployment, the release process requires:
 
-- [Chức năng và trạng thái phát triển](deploy/FEATURES.md)
-- [Hướng dẫn vận hành](deploy/OPERATIONS.md)
-- [Database và Migration](deploy/DATABASE-MIGRATION.md)
-- [Supabase Storage](deploy/STORAGE-MIGRATION.md)
+- Successful automated and browser-based testing.
+- Verified database backups and recovery procedures.
+- Safe, tested database migrations.
+- Preservation of existing records and uploaded files.
+- Docker and runtime verification.
+- Production health checks and regression testing.
 
-## 10. Định hướng phát triển
+Pushing source code to GitHub does not necessarily update the production website.
 
-Dự án tiếp tục hướng đến việc nâng cao trải nghiệm tra cứu học liệu, cải thiện khả năng quản lý thư viện, tăng cường tính ổn định và hỗ trợ quá trình chuyển đổi số trong nhà trường.
+## Security
+
+Security is an important part of this project.
+
+The application uses environment-based configuration, authenticated administration, and controlled access to storage resources.
+
+Sensitive information must never be committed to this repository, including:
+
+- Passwords and API keys.
+- Production database connection strings.
+- Session signing secrets.
+- Storage access credentials.
+- Database backups.
+- Encryption and recovery keys.
+- Private user information.
+
+Production credentials and operational data are maintained separately from public source code.
+
+## Project Documentation
+
+Additional documentation is available in the `deploy` directory:
+
+- [Feature Documentation](deploy/FEATURES.md)
+- [Operations Guide](deploy/OPERATIONS.md)
+- [Database Migration Guide](deploy/DATABASE-MIGRATION.md)
+- [Storage Migration Guide](deploy/STORAGE-MIGRATION.md)
+
+## Future Development
+
+The project aims to continuously improve:
+
+- Educational resource discovery.
+- User experience and accessibility.
+- Library administration efficiency.
+- Search relevance and content organization.
+- System reliability and monitoring.
+- Data protection and backup procedures.
+
+## Project Information
+
+**Project:** Digital Library Management System
+
+**Institution:** Tran Hung Dao – Thanh Xuan High School
+
+**Location:** Hanoi, Vietnam
+
+**Official Website:** https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
+
+**Repository:** https://github.com/qkhai15/thd-digital-library
 
 ---
 
-**Dự án Thư viện số – Trường THPT Trần Hưng Đạo – Thanh Xuân, Hà Nội.**
-
-Website: https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
+Developed to support digital transformation and educational resource accessibility at Tran Hung Dao – Thanh Xuan High School.
