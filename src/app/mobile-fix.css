@@ -1,0 +1,391 @@
+
+/* =========================================================
+   THD LIBRARY - MOBILE RESPONSIVE FIX
+   Import file này SAU globals.css
+========================================================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* =========================================================
+   DETAIL PAGE - DESKTOP SAFETY
+========================================================= */
+
+.detail-card {
+  min-width: 0;
+}
+
+.detail-cover {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.detail-cover img,
+.detail-real-cover {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover;
+}
+
+.detail-info {
+  min-width: 0;
+}
+
+.detail-info h1,
+.detail-info p,
+.detail-fields,
+.detail-desc {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Video không dùng layout bìa sách */
+.detail-card-video {
+  grid-template-columns: 1fr !important;
+}
+
+.detail-card-video .detail-info {
+  width: 100%;
+  max-width: none;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .detail-card {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 26px;
+    padding: 24px;
+  }
+
+  .detail-cover {
+    width: 240px;
+    height: 336px;
+  }
+
+  .detail-info h1 {
+    font-size: 24px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  body {
+    min-width: 0;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+    max-width: 100%;
+  }
+
+  /* ---------- HEADER ---------- */
+
+  .header-inner {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .school-brand {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .school-brand-text {
+    min-width: 0;
+  }
+
+  .school-brand-text strong {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-actions {
+    flex: 0 0 auto;
+  }
+
+  /* ---------- BREADCRUMB ---------- */
+
+  .breadcrumb {
+    margin-bottom: 14px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* ---------- DETAIL CARD ---------- */
+
+  .flow-page {
+    padding: 16px 0 32px;
+  }
+
+  .detail-card {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    gap: 22px;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .detail-cover {
+    position: relative;
+    width: min(270px, 100%) !important;
+    height: 378px !important;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .detail-cover img,
+  .detail-real-cover {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center top;
+  }
+
+  .detail-info {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+  }
+
+  .detail-kind {
+    display: inline-block;
+    margin-bottom: 7px;
+    font-size: 10px;
+  }
+
+  .detail-info h1 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 10px;
+    font-size: 24px;
+    line-height: 1.28;
+    overflow-wrap: anywhere;
+  }
+
+  .detail-author {
+    margin: 0 0 14px;
+    font-size: 13px;
+  }
+
+  .detail-stats {
+    margin: 12px 0 16px;
+    flex-wrap: wrap;
+  }
+
+  .detail-fields {
+    width: 100%;
+    padding-top: 14px;
+    font-size: 13px;
+  }
+
+  .detail-fields p {
+    margin: 0 0 10px;
+    line-height: 1.55;
+  }
+
+  .detail-desc {
+    width: 100%;
+    margin: 18px 0 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .green-btn,
+  .primary-btn {
+    max-width: 100%;
+  }
+
+  .detail-actions-row {
+    width: 100%;
+  }
+
+  .action-chip {
+    min-width: 0;
+  }
+
+  /* ---------- CONTENT BELOW DETAIL ---------- */
+
+  #noi-dung {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .detail-section {
+    width: 100%;
+    min-width: 0;
+    margin-top: 14px;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .detail-section h2 {
+    font-size: 17px;
+  }
+
+  .pdf-frame {
+    display: block;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    max-width: 100%;
+  }
+
+  .media-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .media-audio {
+    width: 100%;
+  }
+
+  /* ---------- ALBUM ---------- */
+
+  .album-viewer {
+    grid-template-columns: 34px minmax(0, 1fr) 34px;
+    gap: 6px;
+  }
+
+  .album-viewer > button:not(.album-main) {
+    width: 34px;
+    height: 34px;
+  }
+
+  .album-main {
+    width: 100%;
+    height: 58vw;
+    min-height: 230px;
+    max-height: 360px;
+  }
+
+  .album-thumbs button {
+    flex: 0 0 74px;
+    width: 74px;
+    height: 54px;
+  }
+
+  /* ---------- COMMENTS ---------- */
+
+  .comment-form {
+    grid-template-columns: 1fr;
+  }
+
+  .comment-form input,
+  .comment-form textarea,
+  .comment-form button {
+    width: 100%;
+  }
+
+  .comment-form button {
+    min-height: 42px;
+  }
+
+  /* ---------- RESULT LIST ---------- */
+
+  .results-card {
+    padding: 14px;
+  }
+
+  .result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .result-card {
+    min-width: 0;
+  }
+
+  .result-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 170 / 235;
+    overflow: hidden;
+  }
+
+  .result-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- HOME SECTIONS ---------- */
+
+  .content-container {
+    overflow: hidden;
+  }
+
+  .book-slider,
+  .video-slider,
+  .album-home-slider {
+    max-width: 100%;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .detail-card {
+    padding: 14px;
+  }
+
+  .detail-cover {
+    width: min(245px, 100%) !important;
+    height: 343px !important;
+  }
+
+  .detail-info h1 {
+    font-size: 21px;
+  }
+
+  .detail-desc {
+    font-size: 13px;
+  }
+
+  .result-grid {
+    gap: 10px;
+  }
+}

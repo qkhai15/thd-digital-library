@@ -1,0 +1,49 @@
+{
+  "name": "thd-library",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/prepare-pdf-assets.mjs",
+    "prebuild": "node scripts/prepare-pdf-assets.mjs",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:migrate": "node scripts/setup-db.mjs",
+    "test": "node --test tests/*.test.cjs",
+    "smoke": "node scripts/smoke-test.mjs",
+    "test:postgres": "node tests/postgres-check.cjs",
+    "ops:storage:inventory": "node scripts/ops-storage-inventory.mjs",
+    "ops:backup:db": "node scripts/ops-backup.mjs db",
+    "ops:backup:storage": "node scripts/ops-backup.mjs storage",
+    "ops:backup:all": "node scripts/ops-backup.mjs all",
+    "ops:backup:verify": "node scripts/ops-backup.mjs verify",
+    "ops:restore:dry-run": "node scripts/ops-backup.mjs restore-dry-run",
+    "ops:backup:rehearse": "node scripts/ops-backup.mjs local-rehearsal"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "dotenv": "^18.0.5",
+    "jose": "^6.2.12",
+    "lucide-react": "^1.49.0",
+    "next": "16.4.3",
+    "pdfjs-dist": "6.4.299",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tus-js-client": "^4.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.23.1",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

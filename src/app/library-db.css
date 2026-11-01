@@ -1,0 +1,78 @@
+.real-cover-wrap {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #eef1f4 !important;
+}
+
+.real-cover-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popular-no-data,
+.home-empty-section {
+  color: #6f7b89;
+  background: rgba(255,255,255,.75);
+  border-radius: 7px;
+  padding: 30px;
+  text-align: center;
+}
+
+.flow-cover {
+  background: linear-gradient(145deg, #1978af, #73bce1);
+}
+
+.flow-real-cover,
+.detail-real-cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-cover {
+  background: linear-gradient(145deg, #1978af, #73bce1);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 820px;
+  border: 1px solid #e1e6eb;
+  border-radius: 6px;
+  background: #f4f6f8;
+}
+
+.media-video {
+  width: 100%;
+  max-height: 680px;
+  background: #000;
+  border-radius: 6px;
+}
+
+.media-audio {
+  width: 100%;
+}
+
+@media (max-width: 650px) {
+  .pdf-frame {
+    height: 600px;
+  }
+}
+
+/* Album/Video detail: bỏ hoàn toàn cột ảnh bìa */
+.detail-card-no-cover {
+  grid-template-columns: 1fr !important;
+}
+
+.detail-card-no-cover .detail-info {
+  width: 100%;
+  max-width: none;
+  padding-top: 0;
+}
+
+.detail-card-no-cover .detail-info h1 {
+  max-width: 1100px;
+}

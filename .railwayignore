@@ -1,0 +1,21 @@
+# Defense in depth: these must never enter Railway's source archive.
+.env
+.env.*
+**/.env
+**/.env.*
+deploy/data/
+test-results/
+tests/browser-fixtures/
+public/uploads/
+.npm-cache/
+node_modules/
+.next/
+.git/
+src.zip
+# Retained as historical documentation; new services use the service API settings.
+railway.toml
+**/*.dump
+**/*.crt
+**/*.cer
+**/*.pem
+**/backups/

@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.npm-cache/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/test-results/
+/tests/browser-fixtures/
+
+# Runtime uploads are persisted and backed up separately from source code.
+/public/uploads/
+/public/pdfjs/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+*.crt
+*.cer
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+!deploy/.env.production.example
+/deploy/data/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Private operational reports
+/deploy/STORAGE-CLEANUP-REPORT.md
+/deploy/storage-qa-provenance.json
+/deploy/SECRET-ROTATION-CHECKLIST.md
+
+# Additional sensitive files
+*.key
+*.p12
+*.pfx
+*.dump
+*.backup
+*.bak
+*.sqlite
+*.sqlite3
+/playwright-report/
+/README_ADMIN.txt
+/README_CAI_DAT.txt
+/deploy/RAILWAY.md

@@ -1,0 +1,7 @@
+thuvien.tranhungdaothanhxuan-hanoi.edu.vn {
+    encode zstd gzip
+    request_body {
+        max_size 501MB
+    }
+    reverse_proxy app:3000
+}

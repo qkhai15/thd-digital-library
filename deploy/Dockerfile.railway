@@ -1,0 +1,28 @@
+FROM node:24-bookworm-slim AS production-deps
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+
+FROM node:24-bookworm-slim AS build
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:24-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=build --chown=node:node /app/package.json /app/package-lock.json ./
+COPY --from=build --chown=node:node /app/next.config.ts ./next.config.ts
+COPY --from=production-deps --chown=node:node /app/node_modules ./node_modules
+COPY --from=build --chown=node:node /app/.next ./.next
+COPY --from=build --chown=node:node /app/public ./public
+COPY --from=build --chown=node:node /app/scripts/start-railway.mjs /app/scripts/production-config.mjs /app/scripts/schema.mjs /app/scripts/upload-policy.mjs ./scripts/
+COPY --from=build --chown=node:node /app/scripts/feature-schema.mjs ./scripts/
+COPY --from=build --chown=node:node /app/scripts/search-feature-schema.mjs ./scripts/
+COPY --from=build --chown=node:node /app/scripts/borrow-feature-schema.mjs ./scripts/
+USER node
+CMD ["node", "scripts/start-railway.mjs"]
