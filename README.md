@@ -1,140 +1,200 @@
-# Thư viện điện tử THPT Trần Hưng Đạo - Thanh Xuân
+# 📚 Thư viện số Trường THPT Trần Hưng Đạo – Thanh Xuân
 
-Project hiện tại dùng Next.js App Router, React và PostgreSQL qua `pg`. Tiếp tục trên
-mã nguồn/database đã có; `.env.local` được giữ riêng và không đưa lên Git.
+Hệ thống thư viện số được xây dựng nhằm hỗ trợ công tác quản lý, khai thác và chia sẻ tài nguyên học tập của Trường THPT Trần Hưng Đạo – Thanh Xuân, Hà Nội.
 
-## Chạy local
+Website cung cấp môi trường tra cứu, đọc tài liệu và tiếp cận học liệu trực tuyến dành cho giáo viên, học sinh, đồng thời hỗ trợ cán bộ thư viện quản lý tài liệu và hoạt động mượn – trả sách.
 
-```powershell
+**🌐 Website chính thức:** https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
+
+## 1. Giới thiệu
+
+Dự án hướng đến việc hiện đại hóa hoạt động thư viện trong nhà trường thông qua nền tảng trực tuyến, giúp người dùng tiếp cận tài nguyên học tập thuận tiện trên máy tính, điện thoại và các thiết bị có trình duyệt web.
+
+Hệ thống được phát triển bằng Next.js, React, TypeScript và PostgreSQL, triển khai trên Railway và sử dụng dịch vụ Supabase cho cơ sở dữ liệu, lưu trữ tài liệu.
+
+## 2. Các chức năng chính
+
+### Dành cho người đọc
+
+- Tra cứu và tìm kiếm tài liệu theo từ khóa.
+- Xem danh mục sách giấy, sách điện tử, sách nói, video, album ảnh và các học liệu khác.
+- Đọc tài liệu PDF trực tuyến.
+- Nghe nội dung âm thanh, xem video và album ảnh.
+- Xem thông tin chi tiết, lượt xem và lượt yêu thích của tài liệu.
+- Gửi yêu cầu mượn sách giấy.
+- Theo dõi tin tức và hoạt động thư viện.
+
+### Các chức năng thuộc bản nâng cấp
+
+Những chức năng dưới đây đã được phát triển trong nhánh `feature-upgrade` và cần hoàn tất quy trình phát hành trước khi coi là chính thức hoạt động trên production:
+
+- Tìm kiếm nâng cao và bộ lọc tài liệu.
+- Phân loại theo môn học, khối lớp, chủ đề và từ khóa.
+- Bộ sưu tập học liệu.
+- Gợi ý tài liệu liên quan.
+- Mã QR và chia sẻ liên kết tài liệu.
+- Lưu tài liệu để đọc sau.
+- Lịch sử tài liệu đã xem.
+- Quy trình quản lý mượn – trả và kiểm soát tồn kho.
+- Bảng thống kê, phân tích hoạt động thư viện.
+- Quy trình quản lý trạng thái xuất bản tài liệu.
+
+## 3. Chức năng quản trị
+
+Hệ thống cung cấp khu vực quản trị phục vụ cán bộ thư viện:
+
+- Thêm, chỉnh sửa, cập nhật tài liệu.
+- Quản lý hình ảnh, tệp PDF, âm thanh và video.
+- Quản lý sách giấy và số lượng tồn kho.
+- Tiếp nhận, duyệt và xử lý yêu cầu mượn – trả.
+- Quản lý tin tức, bình luận và nội dung giới thiệu.
+- Theo dõi nhật ký hoạt động.
+- Cấu hình thông tin và nội dung hiển thị trên website.
+
+Một số chức năng quản trị nâng cao chỉ có trong nhánh đang phát triển và chưa được xác nhận đã triển khai trên website chính thức.
+
+## 4. Công nghệ sử dụng
+
+| Thành phần | Công nghệ |
+|---|---|
+| Giao diện | Next.js, React, TypeScript |
+| Backend | Next.js App Router, API Routes |
+| Cơ sở dữ liệu | PostgreSQL |
+| Truy cập cơ sở dữ liệu | `pg` |
+| Dịch vụ cơ sở dữ liệu | Supabase |
+| Lưu trữ tài liệu | Supabase Storage |
+| Triển khai website | Railway |
+| Trình đọc PDF | PDF.js |
+| Đóng gói ứng dụng | Docker |
+
+## 5. Cài đặt và chạy trên máy cá nhân
+
+### Yêu cầu
+
+- Node.js và npm tương thích với phiên bản của dự án.
+- PostgreSQL hoặc một cơ sở dữ liệu phát triển được cấp riêng.
+- Các biến môi trường cần thiết.
+
+### Cài đặt
+
+Tải mã nguồn:
+
+```bash
+git clone https://github.com/qkhai15/thd-digital-library.git
+cd thd-digital-library
+```
+
+Nếu sử dụng nhánh nâng cấp:
+
+```bash
+git switch feature-upgrade
+```
+
+Cài đặt các thư viện:
+
+```bash
 npm ci
+```
+
+Tạo file `.env.local` từ `.env.example` và cấu hình cho môi trường phát triển.
+
+**Lưu ý:** Không sử dụng thông tin kết nối cơ sở dữ liệu production để thử migration hoặc chạy các bài kiểm thử có thể thay đổi dữ liệu.
+
+Sau khi chuẩn bị cơ sở dữ liệu phát triển, chạy migration theo hướng dẫn của dự án:
+
+```bash
 npm run db:migrate
+```
+
+Khởi động ứng dụng:
+
+```bash
 npm run dev
 ```
 
-DATABASE_URL trong môi trường hiện tại xác định database được dùng. Migration chỉ bổ sung
-schema cần thiết và lưu phiên bản, không xóa nội dung hoặc seed demo. CLI và website dùng
-cùng `scripts/schema.mjs`. Production chạy migration trước khi start và đặt AUTO_MIGRATE=false.
+Mở trình duyệt tại:
 
-## Quản trị
+http://localhost:3000
 
-- `/admin`: tài liệu, upload, trạng thái Nháp/Xuất bản/Lưu trữ, ưu tiên thịnh hành và tồn kho.
-- `/admin/news`: tin tức, ảnh, slug, nội dung nhiều đoạn và trạng thái xuất bản.
-- `/admin/operations`: yêu cầu mượn, duyệt/trả/hủy, bình luận, báo tường, nhật ký và cài đặt duyệt bình luận.
+## 6. Kiểm thử
 
-Nội dung mới được thêm trực tiếp trong admin. Tài khoản lấy từ ADMIN_USERNAME/ADMIN_PASSWORD.
-Production dùng SESSION_SECRET riêng để ký cookie session; cookie HttpOnly, Secure trên HTTPS,
-SameSite=Lax, token được tạo mới khi đăng nhập và hết hạn sau tám giờ. Session vẫn lưu hash trong
-PostgreSQL; logout chỉ thu hồi session hiện tại. ADMIN_SESSION_NOT_BEFORE chặn session phát triển
-cũ mà không xóa lịch sử. Login có giới hạn body và khóa tạm sau 10 lần sai trong 15 phút.
-Sách giấy, sách điện tử, sách nói, video, album và tài liệu khác đang sử dụng.
-Bài giảng điện tử/Kỹ năng sống tạm ngừng trên website; dữ liệu cũ được giữ nguyên.
-Album dùng gallery. Video ưu tiên khung hình từ file. Video/album không vào Sách mới/Thịnh hành.
-PDF đọc trực tiếp bằng PDF.js. Worker/font được chuẩn bị tự động trước `dev`/`build`
-trong `public/pdfjs` và phục vụ từ chính website; không cần CDN hay plugin PDF của browser.
-Tài liệu có lịch sử mượn cần chuyển sang Lưu trữ, không xóa mất lịch sử.
+Dự án có các bài kiểm thử phục vụ việc xác minh chức năng, bảo mật và tính ổn định của hệ thống.
 
-Các README_BACKEND/README_V3/README_CAI_DAT là tài liệu của các gói cũ; khi khác với README
-này, dùng hướng dẫn hiện tại và mã nguồn làm chuẩn. `src/data` là dữ liệu tĩnh cũ, không tham gia
-luồng công khai đang đọc PostgreSQL.
-
-## Kiểm tra
-
-```powershell
+```bash
 npm test
+```
+
+Kiểm tra TypeScript:
+
+```bash
 npx tsc --noEmit
+```
+
+Kiểm tra quy tắc mã nguồn:
+
+```bash
 npm run lint
+```
+
+Build ứng dụng:
+
+```bash
 npm run build
+```
+
+Kiểm thử PostgreSQL sử dụng cơ sở dữ liệu kiểm thử được cấu hình riêng:
+
+```bash
 npm run test:postgres
 ```
 
-Regression test chạy trong bộ nhớ. Test PostgreSQL chỉ ghi bảng tạm pg_temp trên một kết nối
-riêng, không ghi/xóa schema public. Để kiểm tra HTTP với DB hiện có:
+Kết quả kiểm thử cần được xác minh lại trên mã nguồn hiện tại trước khi phát hành.
 
-```powershell
-npm run start -- --port 3100
-# Terminal khác:
-npm run smoke
-```
+## 7. Trạng thái triển khai
 
-Smoke test đọc các trang/API, kiểm tra đăng nhập admin và Range cho file mới; không sửa nội dung.
+**Website chính thức:** Đã được triển khai trên tên miền của nhà trường.
 
-## Production
+**Nhánh `feature-upgrade`:** Chứa các chức năng mở rộng đang trong quá trình hoàn thiện và phát hành.
 
-Chuẩn bị file bàn giao biến môi trường production riêng bằng:
+Việc cập nhật mã nguồn lên GitHub không đồng nghĩa các thay đổi đã được triển khai lên website chính thức.
 
-```powershell
-node scripts/prepare-railway-env.mjs
-```
+Trước khi phát hành phiên bản mới, cần thực hiện đầy đủ:
 
-Script đọc cấu hình hiện có nhưng không sửa `.env.local`; ghi
-`deploy/data/railway-production.env` trong thư mục đã được Git/Docker bỏ qua. File này
-chứa secret: chỉ cấp quyền đọc cho người vận hành, nhập vào Railway Variables qua
-kênh bảo mật, không commit, không chia sẻ và không in nội dung ra log. Script chỉ in
-tên biến/trạng thái. Lần đầu tạo password Admin và `SESSION_SECRET` ngẫu nhiên riêng;
-chạy lại giữ nguyên các credential, `PUBLIC_ORIGINS` và session cutoff đã tạo để không
-vô tình đổi mật khẩu hoặc vô hiệu hóa session. Kiểm tra cutoff tại thời điểm go-live;
-không tự xoay credential trong mỗi lần build/deploy. CA được cung cấp qua biến runtime
-`DB_SSL_CA_BASE64`, không đưa certificate/private file vào image.
+- Kiểm thử mã nguồn và các chức năng.
+- Sao lưu và xác minh khả năng phục hồi cơ sở dữ liệu.
+- Kiểm tra migration và bảo toàn dữ liệu hiện có.
+- Kiểm thử Docker và môi trường triển khai.
+- Triển khai phiên bản mới.
+- Kiểm tra lại website trên tên miền chính thức.
 
-Đích production hiện tại là Railway + Supabase; domain chính thức:
-`https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn`. Xem [Railway](deploy/RAILWAY.md)
-và `deploy/railway-service.json` / `scripts/configure-railway-service.mjs`.
-`railway.toml` chỉ giữ làm tài liệu cấu hình cũ; service mới dùng API cấu hình hiện hành.
-Railway production đã deploy và kiểm thử HTTPS thực tế tại
-`https://thd-library-production.up.railway.app`: 236 kiểm tra HTTP/API, 29 luồng Chrome
-desktop/mobile và 24 kiểm tra ảnh/video/layout PASS. Release cuối đã PASS TLSv1.3 trên
-socket thật, health/Storage và 223 kiểm tra HTTP/API sau khi dừng toàn bộ app server
-local; dữ liệu cũ cả 13 bảng giữ nguyên. Ngày 15/10/2026, Railway xác minh DNS ownership
-và certificate hợp lệ cho domain trường; HTTP chuyển HTTPS 301 và health PASS trên
-domain chính thức. Xem bằng chứng triển khai trong [Railway](deploy/RAILWAY.md).
-Chrome trên release cuối cũng PASS 24 kiểm tra visual và 6 kiểm tra login/session/
-logout/SEO thực tế. [Kiểm thử domain chính thức](deploy/OFFICIAL-DOMAIN-VERIFICATION.md)
-ghi kết quả mới nhất và sửa H1 trang chủ. Search Console cần xác minh thủ công;
-không khẳng định Google đã index.
+## 8. Bảo mật và dữ liệu
 
-Production dùng DATABASE_URL hosted Supabase, AUTO_MIGRATE=false, Storage Supabase và CA runtime
-giữ TLS verify-full. Schema hiện tại version 2 có 13 bảng ứng dụng, gồm storage_upload_intents.
-Không cần PostgreSQL local, Railway volume hoặc public/uploads để lưu dữ liệu production.
-Migrations bổ sung được chạy có backup trước; startup chỉ kiểm tra schema, không restore/seed.
+Dự án sử dụng biến môi trường để quản lý thông tin cấu hình nhạy cảm.
 
-APP_ORIGIN xác định origin HTTPS public. PUBLIC_ORIGINS tùy chọn thêm các origin HTTPS chính xác
-cho hostname Railway hoặc proxy/tunnel; không dùng wildcard hoặc hardcode hostname tunnel.
-Origin/Host/forwarded headers chỉ được tin khi khớp cấu hình; development vẫn dùng localhost/LAN.
-Canonical/metadata/sitemap luôn dùng domain trường, không dùng hostname preview/tunnel.
+Không đưa lên repository:
 
-[Hướng dẫn VPS cũ](deploy/PRODUCTION.md) và docker-compose/Caddy/backup ổ đĩa local được giữ làm
-tài liệu lịch sử; không dùng luồng đó cho Railway hiện tại. `/uploads/...` cũ được resolve sang
-Supabase, giữ URL và file local cũ. Range PDF/audio/video được Storage trả 206 sau redirect.
+- Mật khẩu và khóa truy cập dịch vụ.
+- Connection string chứa thông tin xác thực.
+- File `.env.local` hoặc cấu hình production thực tế.
+- Bản sao lưu cơ sở dữ liệu và tệp lưu trữ.
+- Khóa mã hóa và thông tin phục hồi.
+- Dữ liệu riêng tư của người dùng.
 
-## Supabase Storage và upload
+Việc quản lý dữ liệu và triển khai production phải tuân thủ các quy trình sao lưu, kiểm thử và phân quyền phù hợp.
 
-Xem [migration upload](deploy/STORAGE-MIGRATION.md) và [Free-plan verification](deploy/DIRECT-UPLOAD-FREE-VERIFICATION.md).
-Storage local/Supabase cùng tồn tại trong development/migration; production chỉ dùng Supabase.
-Link cũ và file local được giữ nguyên; thay/xóa nội dung không tự xóa object được dùng chung.
+## 9. Tài liệu kỹ thuật
 
-Free plan hiện giới hạn PDF/audio/video 50 MiB/file (52428800 bytes), cover 10 MiB,
-gallery/banner 15 MiB. UPLOAD_MEDIA_MAX_MIB là cấu hình tập trung; limit thực tế lấy mức thấp
-nhất giữa policy và hai bucket. Admin kiểm tra kích thước trước khi xin token/truyền file.
-Video vượt limit được hướng dẫn nén hoặc nâng Storage plan; không nâng plan cho release này.
+- [Chức năng và trạng thái phát triển](deploy/FEATURES.md)
+- [Hướng dẫn vận hành](deploy/OPERATIONS.md)
+- [Database và Migration](deploy/DATABASE-MIGRATION.md)
+- [Supabase Storage](deploy/STORAGE-MIGRATION.md)
 
-Ảnh/file nhỏ giữ multipart tương thích. PDF/audio/video trên 6 MiB dùng Admin-authenticated
-signing → browser signed TUS trực tiếp vào bucket PRIVATE quarantine → backend finalize.
-Backend kiểm tra MIME/extension/size/path/signature và quyền sở hữu intent trước khi Storage
-copy sang bucket public; chỉ metadata/URL được lưu vào PostgreSQL. Railway không buffer toàn
-bộ file lớn; Supabase secret không xuống browser. TUS dùng chunk 6 MiB, retry/resume.
-Multipart Supabase có cap thực tế 16 MiB để giữ đường tương thích an toàn.
+## 10. Định hướng phát triển
 
-Ngày 15/10/2026, tổng object public + private khoảng **940 MiB**, gần quota Storage Free 1 GB;
-nguồn private và bản public đều được giữ và cùng tính dung lượng. Đây là quota tổng,
-khác limit 50 MiB/file; Supabase tính usage trung bình theo GB-hours. Chưa xóa file
-hoặc nâng plan. Trước khi thêm nhiều media lớn, người vận hành cần kiểm tra dashboard,
-backup và duyệt retention; xem [số đo/giới hạn vận hành](deploy/RAILWAY.md).
+Dự án tiếp tục hướng đến việc nâng cao trải nghiệm tra cứu học liệu, cải thiện khả năng quản lý thư viện, tăng cường tính ổn định và hỗ trợ quá trình chuyển đổi số trong nhà trường.
 
-## Vận hành và rollback
+---
 
-Xem [database migration/backup/restore](deploy/DATABASE-MIGRATION.md) và [Railway operations](deploy/RAILWAY.md).
-Backup PostgreSQL không chứa bytes của Storage: cần backup riêng object public/quarantine và
-manifest path/hash, giữ bản mã hóa ngoài máy/repo, kiểm thử restore vào database/bucket tách biệt.
-Health `/api/health` kiểm tra DB/schema; Storage được kiểm tra lúc startup. Cần uptime/error/RAM
-alerts ngoài Railway healthcheck. Rollback ứng dụng giữ hosted DB/Storage, SESSION_SECRET và
-cutoff hiện tại; không restore đè dữ liệu mới hoặc quay lại persistent upload local.
+**Dự án Thư viện số – Trường THPT Trần Hưng Đạo – Thanh Xuân, Hà Nội.**
+
+Website: https://thuvien.tranhungdaothanhxuan-hanoi.edu.vn
